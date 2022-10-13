@@ -30,7 +30,7 @@ setInterval(() => {
 function getGeo() {
     var searchCityValue = searchCity.value
     console.log(searchCityValue);
-    fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + searchCityValue + "&limit=5&appid=" + apiKey)
+    fetch("https://api.openweathermap.org/geo/1.0/direct?q=" + searchCityValue + "&limit=5&appid=" + apiKey)
         .then(function (res) {
             return res.json()
         }).then(function (data) {
@@ -41,7 +41,7 @@ function getGeo() {
 
 //function with value of data. fetched lon and lat, set units
 function getWeather(data) {
-    fetch("http://api.openweathermap.org/data/2.5/forecast?lat=" + data[0].lat + "&lon=" + data[0].lon + "&appid=" + apiKey + "&units=imperial")
+    fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + data[0].lat + "&lon=" + data[0].lon + "&appid=" + apiKey + "&units=imperial")
         .then(function (res) {
             return res.json()
         }).then(function (data) {
