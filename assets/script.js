@@ -7,8 +7,6 @@ var futureWeather = document.querySelector(".future-forcast");
 var timeClass = document.querySelector(".time");
 var dateClass = document.querySelector(".date");
 
-var days = ["Sunday", "Monday", 'Tuesday', 'Wednesday', 'Thursday']
-
 // setinveral to set up month/date/time and display on main page
 setInterval(() => {
     var time = new Date();
@@ -78,6 +76,7 @@ function getCurrentWeather(data) {
 
 //function for fetching and displaying weather forcast on cards.
 function fiveDayForcast(data) {
+    console.log("from inside five day forcast function");
     for(var i=0; i<data.list.length; i=i+8) {
         console.log(data.list[i])
         //Create Element for html and in order to display
@@ -89,21 +88,30 @@ function fiveDayForcast(data) {
         var temp = data.list[i].main.temp;
         var wind = data.list[i].wind.speed;
         var hum = data.list[i].main.humidity;
-        var infoArray = [temp, wind, hum];
-        dayCard.append(date);
+        console.log(date);
+        console.log(temp);
+        console.log(wind);
+        console.log(hum);
+        var infoArray = [date, temp, wind, hum];
+       // dayCard.append(date);
         for(var j=0; j<infoArray.length; j++) {
+            console.log("from inside second loop");
             var dayCardDiv = document.createElement("p");
-            dayCardDiv.setAttribute("class", "futureWeather");
-            dayCard.textContent = `Date: ${date}`;
-            dayCardDiv.textContent = `Temp: ${temp}`;
-            dayCardDiv.textContent = `Wind: ${wind}`;
-            dayCardDiv.textContent = `Humidity: ${hum}`;
+            dayCardDiv.setAttribute("class", "");
+            console.log(dayCardDiv);
+            futureWeather.append(dayCard);
             dayCardDiv.append(infoArray[j]);
             dayCard.append(dayCardDiv)
+            
         }
-        //Add element with value of var.value of data as above
-        // dayCardDiv.append(wind);
-        // dayCardDiv.append(hum);
-        futureWeather.appendChild(dayCard);
+
+    // j.textContent = `Date: ${date.i}`;
+    // dayCardDiv.textContent = `Temp: ${temp}`;
+    // dayCardDiv.textContent = `Wind: ${wind}`;
+    // dayCardDiv.textContent = `Humidity: ${hum}`;
+    //Add element with value of var.value of data as above
+    // dayCardDiv.append(wind);
+    // dayCardDiv.append(hum);
+    // futureWeather.appendChild(dayCard);
     }
 }
